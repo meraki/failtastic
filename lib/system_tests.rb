@@ -46,7 +46,7 @@ class SystemTests
 
     # figure out what shard each msg came from.
     fail_msgs.each do |msg|
-      msg.shard = $1 if msg.body =~ /(meraki|root)@([a-z0-9]+)/
+      msg.shard = $2 if msg.body =~ /(meraki|root)@([a-z0-9]+)/
       msg.shard = $1 if msg.subject =~ /production (n\d+)/
       msg.shard ||= 'unknown'
     end
